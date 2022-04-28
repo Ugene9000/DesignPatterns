@@ -7,7 +7,7 @@ public class RubberDuck extends Duck{
     }
 
     @Override
-    protected void quack() {
+    protected void performQuack() {
         System.out.println("overridden to squeak");
     }
 }

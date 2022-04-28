@@ -4,5 +4,8 @@ public class Main {
 
     public static void main(String[] args) {
 
+        new A().performFly();
+//        new A().flyBehavior.fly();
+
     }
 }
