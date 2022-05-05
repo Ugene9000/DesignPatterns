@@ -1,6 +1,4 @@
-package com.company;
-
-import java.util.Dictionary;
+package com.company.duck_simulator;
 
 public class DecoyDuck extends Duck {
 
