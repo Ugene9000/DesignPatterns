@@ -1,7 +1,15 @@
 package com.company.weather_monitoring;
 
 public interface Observer {
-    void applyForObservation();
-    void update(float temp, float humidity, float pressure);
-    void quitObserving();
+    WeatherData weatherData = new WeatherData();
+
+    default void applyForObservation() {
+        weatherData.registerObserver(this);
+    };
+
+    default void quitObserving() {
+        weatherData.removeObserver(this);
+    }
+
+    void update();
 }

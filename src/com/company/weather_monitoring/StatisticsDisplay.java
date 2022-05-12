@@ -1,24 +1,33 @@
 package com.company.weather_monitoring;
 
 public class StatisticsDisplay implements Observer, DisplayElement{
+    private float maxTemp = 0.0f;
+    private float minTemp = 200;
+    private float tempSum= 0.0f;
+    private int numReadings;
+    private WeatherData weatherData;
 
-    @Override
+    public StatisticsDisplay(WeatherData weatherData) {
+        this.weatherData = weatherData;
+        weatherData.registerObserver(this);
+    }
+
+    public void update() {
+        float temp = weatherData.getTemperature();
+        tempSum += temp;
+        numReadings++;
+        if (temp > maxTemp) {
+            maxTemp = temp;
+        }
+        if (temp < minTemp) {
+            minTemp = temp;
+        }
+        display();
+    }
+
+
     public void display() {
-
-    }
-
-    @Override
-    public void applyForObservation() {
-
-    }
-
-    @Override
-    public void update(float temp, float humidity, float pressure) {
-
-    }
-
-    @Override
-    public void quitObserving() {
-
+        System.out.println("Avg/Max/Min temperature = " + (tempSum / numReadings)
+                + "/" + maxTemp + "/" + minTemp);
     }
 }
